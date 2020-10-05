@@ -1,60 +1,42 @@
 <template>
   <v-app>
-    <v-app-bar
-      app
-      color="primary"
-      dark
-    >
-      <div class="d-flex align-center">
-        <v-img
-          alt="Vuetify Logo"
-          class="shrink mr-2"
-          contain
-          src="https://cdn.vuetifyjs.com/images/logos/vuetify-logo-dark.png"
-          transition="scale-transition"
-          width="40"
-        />
-
-        <v-img
-          alt="Vuetify Name"
-          class="shrink mt-1 hidden-sm-and-down"
-          contain
-          min-width="100"
-          src="https://cdn.vuetifyjs.com/images/logos/vuetify-name-dark.png"
-          width="100"
-        />
-      </div>
-
+    <v-app-bar v-if="isLoggedIn" app dark>
       <v-spacer></v-spacer>
-
-      <v-btn
-        href="https://github.com/vuetifyjs/vuetify/releases/latest"
-        target="_blank"
-        text
-      >
-        <span class="mr-2">Latest Release</span>
-        <v-icon>mdi-open-in-new</v-icon>
-      </v-btn>
+      <v-btn color="pink">Test</v-btn>
     </v-app-bar>
+    <v-navigation-drawer v-if="isLoggedIn" app v-model="drawer" dark></v-navigation-drawer>
 
     <v-main>
-      <HelloWorld/>
+      <div class="app-container">
+        <router-view></router-view>
+      </div>
     </v-main>
   </v-app>
 </template>
 
 <script>
-import HelloWorld from './components/HelloWorld';
+import { mapGetters } from 'vuex';
 
 export default {
   name: 'App',
 
   components: {
-    HelloWorld,
   },
 
   data: () => ({
-    //
+    drawer: null,
   }),
+
+  computed: {
+    ...mapGetters(['isLoggedIn'])
+  }
 };
 </script>
+
+<style scoped>
+.app-container {
+  background-image: linear-gradient(to right, #bbb, #fff, #bbb);
+  height: 100vh;
+  overflow-x: hidden;
+}
+</style>
