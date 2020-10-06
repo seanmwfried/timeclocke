@@ -1,13 +1,20 @@
 <template>
-  <div
-      @mouseover="isInMenu = true"
-      @mouseleave="isInMenu = false"
-  >
-    <v-navigation-drawer 
-      mini-variant 
-      app
+  <div>
+    <v-app-bar dark app class="bar">
+      <v-btn @click="drawer = true" class="px-0" elevation="0">
+        <v-icon large>
+          mdi-menu
+        </v-icon>
+      </v-btn>
+      <v-spacer></v-spacer>
+      <div class="text-h5">
+        <span class="font-weight-regular">time</span><span class="font-weight-thin">clocke</span>
+      </div>
+    </v-app-bar>
+    <v-navigation-drawer
+      v-model="drawer"
       dark
-      expand-on-hover
+      app
     >
       <!-- Avatar Banner -->
       <v-list-item class="px-2">
@@ -19,6 +26,11 @@
             {{ userName }}
           </span>
         </v-list-item-title>
+        <v-btn @click="drawer = false" light elevation="0">
+          <v-icon>
+            mdi-close
+          </v-icon>
+        </v-btn>
       </v-list-item>
       <v-divider></v-divider>
       <v-list nav class="pa-0">
@@ -28,6 +40,7 @@
             class="px-2 ma-0"
             v-for="menuItem in menuItems"
             :key="menuItem.title"
+            :to="menuItem.path"
           >
             <v-list-item-icon>
               <v-icon large>
@@ -45,7 +58,6 @@
       <div class="ma-5 text-right">
         <v-btn 
           class="button" 
-          :class="buttonVisibility" 
           light
           @click="processLogout"
         >Logout</v-btn>
@@ -59,7 +71,7 @@ import { mapActions, mapGetters } from 'vuex';
 
 export default {  
   data: () => ({
-    isInMenu: false,
+    drawer: null,
     menuSelection: 0,
     menuItems: [
       { title: 'Dashboard', icon: 'mdi-view-dashboard', path: '/dashboard' },
@@ -78,21 +90,25 @@ export default {
 
   computed: {
     ...mapGetters(['userName']),
-
-    buttonVisibility() {
-      return this.isInMenu ? 'visible' : '';
-    }
   }
 }
 </script>
 
 <style scoped>
-.button {
-  opacity: 0;
-  transition: opacity 0.1s;
+a{
+  text-decoration: none;
 }
 
-.visible {
-  opacity: 1;
+.bar > div {
+  padding: 0;
+}
+
+.v-list-item--link::before {
+  background-color: white;
+}
+
+.v-list-item--active .v-list-item__icon,
+.v-list-item--active .v-list-item__title {
+  color: white;
 }
 </style>
