@@ -1,11 +1,6 @@
 <template>
   <v-app>
-    <v-app-bar v-if="isLoggedIn" app dark>
-      <v-spacer></v-spacer>
-      <v-btn color="pink">Test</v-btn>
-    </v-app-bar>
-    <v-navigation-drawer v-if="isLoggedIn" app v-model="drawer" dark></v-navigation-drawer>
-
+    <TheNavigation v-if="isLoggedIn"/>
     <v-main>
       <div class="app-container">
         <router-view></router-view>
@@ -16,11 +11,13 @@
 
 <script>
 import { mapGetters } from 'vuex';
+import TheNavigation from '@/components/nav/TheNavigation.vue';
 
 export default {
   name: 'App',
 
   components: {
+    TheNavigation
   },
 
   data: () => ({

@@ -39,5 +39,6 @@ export default new Vuex.Store({
   
   getters: {
     isLoggedIn: state => state.isLoggedIn,
+    userName: state => state.userName
   }
 })

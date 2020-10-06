@@ -18,7 +18,7 @@
           ></v-text-field>
         </v-form>
         <div class="text-right">
-          <v-btn color="primary" @click.prevent="login">Login</v-btn>
+          <v-btn dark @click.prevent="attemptLogin">Login</v-btn>
         </div>
       </v-sheet>
     </div>
@@ -27,7 +27,7 @@
 
 <script>
 // @ is an alias to /src
-import { mapActions } from 'vuex';
+import { mapActions, mapGetters } from 'vuex';
 
 export default {
   data: () => ({
@@ -36,7 +36,25 @@ export default {
   }),
 
   methods: {
-    ...mapActions(['login'])
+    ...mapActions(['login']),
+    
+    attemptLogin() {
+      if(this.userName.length > 0){
+        this.login(this.userName);
+        this.$router.push('/dashboard');
+      }
+    }
+  },
+
+  computed: {
+    ...mapGetters(['isLoggedIn']),
+
+  },
+
+  mounted() {
+    if(this.isLoggedIn){
+      this.$router.push('/dashboard');
+    }
   }
 }
 </script>
