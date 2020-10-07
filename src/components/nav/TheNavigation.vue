@@ -26,7 +26,7 @@
             {{ userName }}
           </span>
         </v-list-item-title>
-        <v-btn @click="drawer = false" light elevation="0">
+        <v-btn @click="drawer = false" dark elevation="0">
           <v-icon>
             mdi-close
           </v-icon>

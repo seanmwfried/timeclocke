@@ -1,6 +1,11 @@
 <template>
-  <div class="container">
-    <TimePuncher/>
+  <div class="dashboard ma-5">
+    <h1 class="text-center text-h2 ma-5">
+      <span class="font-weight-regular">dash</span><span class="font-weight-thin">board</span>
+    </h1>    
+    <div class="d-flex justify-space-around">
+      <TimePuncher/>
+    </div>
   </div>
 </template>
 
@@ -27,5 +32,4 @@ export default {
 </script>
 
 <style scoped>
-
 </style>

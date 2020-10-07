@@ -1,21 +1,19 @@
 <template>
-  <v-sheet elevation="1" class="ma-0 pa-1 d-flex flex-column justify-space-around flex-sm-row text-center text-sm-left">
-    <div>{{ formattedTime }}</div>
-    <div>{{ formattedDate }}</div>
-    <div>Start Lunch</div>
-  </v-sheet>
+  <div class="ma-0 pa-1 container text-center">
+    <span>{{ formattedTime }}</span>
+    <v-divider vertical></v-divider>
+    <span>{{ formattedDate }}</span>
+    <v-divider vertical></v-divider>
+    <span>{{ punchType }}</span>
+  </div>
 </template>
 
 <script>
 export default {
   props: {
-    // date: Date,
+    date: String,
     punchType: String
   },
-
-  data: () => ({
-    date: "2011-10-06T19:48:42.000Z"
-  }),
 
   computed: {
     formattedTime() {      
@@ -54,7 +52,8 @@ export default {
 </script>
 
 <style scoped>
-article {
- 
+.container {
+  display: grid;
+  grid-template-columns: 1fr 1px 1fr 1px 1fr;
 }
 </style>
