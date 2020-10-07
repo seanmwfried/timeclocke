@@ -1,13 +1,17 @@
 <template>
   <div class="container">
-    Dashboard
+    <TimePuncher/>
   </div>
 </template>
 
 <script>
 import { mapGetters } from 'vuex';
+import TimePuncher from '../components/dashboard/timepuncher/TimePuncher';
 
 export default {
+  components: {
+    TimePuncher
+  },
 
   computed: {
     ...mapGetters(['isLoggedIn']),
