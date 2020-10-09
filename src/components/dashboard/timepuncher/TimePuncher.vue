@@ -87,30 +87,32 @@ export default {
 
       processClockInOutButton() {
         if (this.isClockedIn) {
-          this.addTimePunch({punchtype: 'Clock Out', date: new Date()});
+          this.addTimePunch({punchType: 'Clock Out', date: new Date().toISOString()});
           this.clockOut();
         } else {
-          this.addTimePunch({punchtype: 'Clock In', date: new Date()});
+          this.addTimePunch({punchType: 'Clock In', date: new Date().toISOString()});
           this.clockIn();
         }
       },
 
       processLunchButton() {
         if (this.isOnLunch) {
-          this.addTimePunch({punchtype: 'End Lunch', date: new Date()});
+          const a = {punchType: 'End Lunch', date: new Date().toISOString()}
+          console.log(a)
+          this.addTimePunch(a);
           this.endLunch();
         } else {
-          this.addTimePunch({punchtype: 'Start Lunch', date: new Date()});
+          this.addTimePunch({punchType: 'Start Lunch', date: new Date().toISOString()});
           this.startLunch();
         }
       },
 
       processBreakButton() {
         if (this.isOnBreak) {
-          this.addTimePunch({punchtype: 'End Break', date: new Date()});
+          this.addTimePunch({punchType: 'End Break', date: new Date().toISOString()});
           this.endBreak();
         } else {
-          this.addTimePunch({punchtype: 'Start Break', date: new Date()});
+          this.addTimePunch({punchType: 'Start Break', date: new Date().toISOString()});
           this.startBreak();
         }
       }

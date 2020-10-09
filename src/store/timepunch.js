@@ -3,7 +3,14 @@ export default {
     isClockedIn: false,
     isOnLunch: false,
     isOnBreak: false,
-    timepunches: [],
+    timepunches: [
+      {punchType: 'Clock In', date: '2020-10-07T17:39:06.521Z'},
+      {punchType: 'Clock Out', date: '2020-10-07T18:39:06.521Z'},
+      {punchType: 'Clock In', date: '2020-10-06T17:39:06.521Z'},
+      {punchType: 'Clock Out', date: '2020-10-06T18:39:06.521Z'},
+      {punchType: 'Clock In', date: '2020-10-05T17:39:06.521Z'},
+      {punchType: 'Clock Out', date: '2020-10-05T18:39:06.521Z'},
+    ],
   },
 
   getters: {
@@ -18,7 +25,7 @@ export default {
     setIsOnLunch(state, newValue) { state.isOnLunch = newValue; },
     setIsOnBreak(state, newValue) { state.isOnBreak = newValue; },
     addTimePunch(state, payload) {
-      state.timepunches.push({ punchType: payload.punchtype, date: payload.date });
+      state.timepunches.push({ punchType: payload.punchType, date: payload.date });
     }
   },
 
