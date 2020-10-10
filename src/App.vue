@@ -33,7 +33,7 @@ export default {
 <style scoped>
 .app-container {
   background-image: linear-gradient(to right, #bbb, #fff, #bbb);
-  height: 100vh;
+  height: 100%;
   overflow-x: hidden;
 }
 </style>
