@@ -15,6 +15,7 @@
       v-model="drawer"
       dark
       app
+      temporary
     >
       <!-- Avatar Banner -->
       <v-list-item class="px-2">

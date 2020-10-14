@@ -1,5 +1,5 @@
 <template>
-  <v-card rounded class="punch-container mb-5">
+  <v-card rounded class="punch-container ma-5 mt-0">
     <v-card-title class="grey darken-4 white--text justify-center">
       <v-icon left dark>mdi-clock-time-ten-outline</v-icon>
       Time Punch

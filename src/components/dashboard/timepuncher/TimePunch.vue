@@ -1,18 +1,31 @@
 <template>
-  <div class="ma-0 pa-1 container text-center">
-    <span>{{ formattedTime }}</span>
-    <v-divider vertical></v-divider>
-    <span>{{ formattedDate }}</span>
-    <v-divider vertical></v-divider>
-    <span>{{ punchType }}</span>
-  </div>
+  <v-hover v-slot:default="{ hover } ">
+    <div 
+      :class='defaultStyle + " " + 
+              (itemIndex % 2 == 1 && !hover ? offsetStyle : "") + " " +
+              (hover ? hoverStyle : "")'
+    >
+      <span>{{ formattedTime }}</span>
+      <v-divider vertical></v-divider>
+      <span>{{ formattedDate }}</span>
+      <v-divider vertical></v-divider>
+      <span>{{ punchType }}</span>
+    </div>
+  </v-hover>
 </template>
 
 <script>
 export default {
+  data: () => ({
+    defaultStyle: 'punch-container ma-0 pa-1 text-center',
+    offsetStyle: 'grey lighten-3',
+    hoverStyle: 'grey white--text'
+  }),
+
   props: {
     date: String,
-    punchType: String
+    punchType: String,
+    itemIndex: Number
   },
 
   computed: {
@@ -52,8 +65,10 @@ export default {
 </script>
 
 <style scoped>
-.container {
+.punch-container {
   display: grid;
   grid-template-columns: 1fr 1px 1fr 1px 1fr;
+  align-items: center;
+  cursor: pointer;
 }
 </style>

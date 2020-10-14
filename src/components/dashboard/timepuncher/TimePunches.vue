@@ -5,7 +5,7 @@
       :key="punch.date" 
       :date="punch.date"
       :punchType="punch.punchType"
-      :class="colorOffset(index)"
+      :itemIndex="index"
       />
   </v-sheet>
 </template>
@@ -26,20 +26,14 @@ export default {
     todaysPunches() {
       //Get new date object for today and set time to midnight
       const todayAtMidnight = new Date();
-      todayAtMidnight.setHours(0);
-      todayAtMidnight.setMinutes(0);
-      todayAtMidnight.setSeconds(0);
+      todayAtMidnight.setUTCHours(0);
+      todayAtMidnight.setUTCMinutes(0);
+      todayAtMidnight.setUTCSeconds(0);
 
       //Filter out today's punches
       return this.timepunches.filter((timepunch) => {
         return new Date(timepunch.date).getTime() > todayAtMidnight.getTime()
       });
-    }
-  },
-
-  methods: {
-    colorOffset(index) {
-      return index % 2 == 1 ? 'grey lighten-3' : '';
     }
   }
 
